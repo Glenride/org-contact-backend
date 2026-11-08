@@ -1,0 +1,16 @@
+name = "org-contact-backend"
+main = "src/index.js"
+compatibility_date = "2026-11-08"
+
+# Serves POST /api/contact on dvaughnhouse.org (the Glenride gateway zone).
+# A Worker route takes precedence over the Tunnel for this exact path;
+# every other path on the zone still goes to the iMac Laravel app.
+routes = [
+  { pattern = "dvaughnhouse.org/api/contact", zone_id = "3c2d23b6ff599bbfcc063c71a29b3037" }
+]
+
+# SAME D1 database as the .com contact backend — all contacts land in one table.
+[[d1_databases]]
+binding = "DB"
+database_name = "dvaughnhouse-contacts"
+database_id = "956da9fd-e7c3-4e9c-8d11-5c9aa98433d8"
